@@ -5,8 +5,10 @@ namespace JawHare;
 // Pull in the configuration file
 require_once 'conf/config.php';
 
-// Create and autolaoder for the framework.
-// Note that the order of these two matters so that the module can overwrite the framework objects if it wishes
+/**
+ * Create and autoloader for the framework.
+ * Note that the order of these two matters so that the module can overwrite the framework objects if it wishes
+ */
 spl_autoload_register(function($class_name)
 {
 	global $ini;
@@ -20,6 +22,11 @@ spl_autoload_register(function($class_name)
 	}
 });
 
+/**
+ * Access or create the Cache instance.
+ * 
+ * @param array $config = null
+ */
 function Cache($config = null)
 {
 	static $instance = null;
@@ -39,6 +46,12 @@ function Cache($config = null)
 	}
 }
 
+/**
+ * Access or create a database class instance.
+ * 
+ * @param array $config = null
+ * @throws \Exception
+ */
 function Database($config = null)
 {
 	static $instance = null;
@@ -57,6 +70,12 @@ function Database($config = null)
 	}
 }
 
+/**
+ * Access or create a Session class instance.
+ * 
+ * @param array $config = null
+ * @throws \Exception
+ */
 function Session($config = null)
 {
 	static $instance = null;
@@ -75,6 +94,11 @@ function Session($config = null)
 	}
 }
 
+/**
+ * Retrieve an instance of Settings (singleton).
+ * 
+ * @param array $config = null
+ */
 function Settings($config = array())
 {
 	static $instance = null;
@@ -87,6 +111,12 @@ function Settings($config = array())
 	return $instance;
 }
 
+/**
+ * Retrieve an Authentication class instance. (singleton)
+ * 
+ * @param array $config = null
+ * @throws \Exception
+ */
 function Authentication($config = null)
 {
 	static $instance = null;
